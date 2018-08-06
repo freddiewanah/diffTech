@@ -14,7 +14,7 @@
       ">
 
         <p style = "
-        color:#ffffff;
+        color:#12090f;
         font-family: fantasy;
         border: 0px;
         font-size:2rem;
@@ -43,7 +43,7 @@
         <form action="/tagcomparepost/" method="post">
         {% csrf_token %}
           <div class="form-group">
-            <!-- <p class = "text-center" style = "font-size: 2.4rem;font-weight: 300;font-family: fantasy;color:  #ffffff;margin-bottom: 2px">Compare similar technology: </p> -->
+            <!-- <p class = "text-center" style = "font-size: 2.4rem;font-weight: 300;font-family: fantasy;color:  #12090f;margin-bottom: 2px">Compare similar technology: </p> -->
               {% for key, value in Error.items %}
               {% if value.1 %}
               <p class = "text-center" style = "color:#d0081b">{{value.0}}</p>
@@ -61,7 +61,7 @@
                               <input id = "oritags" class="form-control form-control-lg" style = "background-color: rgb(18, 9, 14);border: 2px solid #f8f9fa;color: #f8f9fa;text-align:center;" name = "tag" type="text" placeholder="Enter a technology">
                           </div>
                           <div class = "col-1 align-items-center">
-                              <p class = "text-center" style = "font-size: 2rem; color: #ffffff">vs</p>
+                              <p class = "text-center" style = "font-size: 2rem; color: #12090f">vs</p>
                           </div>
                           <div class = "col-5 align-items-center">
                               <input id = "simitags" class="form-control form-control-lg" style = "background-color: rgb(18, 9, 14);border: 2px solid #f8f9fa;color: #f8f9fa;text-align:center;" name = "simi" type="text" placeholder="Enter a technology">
@@ -78,7 +78,7 @@
             <div class="=d-flex flex-column">
           <!-- <div class="column d-flex justify-content-center"> -->
             <input id = "oritags" class="form-control form-control-lg" style = "background-color: rgb(18, 9, 14);border: 2px solid #f8f9fa;color: #f8f9fa;text-align:center;" name = "tag" type="text" placeholder="Enter a technology">
-            <p class = "text-center" style = "font-size: 1.5rem; color: #ffffff">vs</p>
+            <p class = "text-center" style = "font-size: 1.5rem; color: #12090f">vs</p>
             <input id = "simitags" class="form-control form-control-lg" style = "background-color: rgb(18, 9, 14);border: 2px solid #f8f9fa;color: #f8f9fa;text-align:center;" name = "simi" type="text" placeholder="Enter a technology">
             <br>
             <button  type="submit" class="list-group-item list-group-item-action" style="background-color: #e8ae00;width: 160px;padding-top: 8px;padding-bottom: 4px;padding-left: 4px;padding-right: 4px;text-align: center;margin: auto;"><h5 class = "text-center" style = "font-size: 1.5rem;font-family: monospace;">Compare</h5></button>
@@ -130,7 +130,7 @@
                         width: 600px;
                         ">{{key|capfirst}}</p>
                    </a>
-                   <table class="table table-hover table-striped" style = "background-color : #5C0029;margin-bottom:2rem;color:#ffffff;border-top:3px solid #12090e;">
+                   <table class="table table-hover table-striped" style = "background-color : #5C0029;margin-bottom:2rem;color:#12090f;border-top:3px solid #ffffff;">
 
                       <tr style = "background-color:#0c5460; ">
                       <th style = "width: 124px;text-align:center;">Quality</th>
@@ -141,13 +141,13 @@
                             {% for quality, examples in value.items %}
 
                             <tr>
-                            <th scope="col" style = "text-align:center;border-top:3px solid #12090e">{{ quality | capfirst}}</th>
+                            <th scope="col" style = "text-align:center;border-top:3px solid #ffffff">{{ quality | capfirst}}</th>
 
-                            <td scope="col" style = "text-align:left;border-top:3px solid #12090e">
+                            <td scope="col" style = "text-align:left;border-top:3px solid #ffffff">
                               {% for row in examples %}
                               {% with "https://stackoverflow.com/questions/"|add:row.1 as address %}
 
-                                <a href = {{address}} style = "color:#ffffff">
+                                <a href = {{address}} style = "color:#12090f">
                                   <p style = "margin-bottom :3px">"{{ row.0 | capfirst}}"</p>
                                 </a>
                                 <p style = "
@@ -181,7 +181,7 @@
                         width: 600px;
                         ">{{key|capfirst}}</p>
                   </a>
-                  <table class="table table-hover table-striped" style = "background-color : #5C0029;margin-bottom:2rem;color:#ffffff;border-top:3px solid #12090e;">
+                  <table class="table table-hover table-striped" style = "background-color : #5C0029;margin-bottom:2rem;color:#12090f;border-top:3px solid #ffffff;">
 
                       <tr style = "background-color:#0c5460; ">
                       <th style = "width: 124px;text-align:center;">Quality</th>
@@ -191,13 +191,13 @@
                     <tbody>
                           {% for quality, examples in value.items %}
                             <tr>
-                            <th scope="col" style = "text-align:center;border-top:3px solid #12090e">{{ quality | capfirst}}</th>
+                            <th scope="col" style = "text-align:center;border-top:3px solid #ffffff">{{ quality | capfirst}}</th>
 
-                            <td scope="col" style = "text-align:left;border-top:3px solid #12090e">
+                            <td scope="col" style = "text-align:left;border-top:3px solid #ffffff">
                               {% for row in examples %}
                               {% with "https://stackoverflow.com/questions/"|add:row.1 as address %}
 
-                                <a href = {{address}} style = "color:#ffffff">
+                                <a href = {{address}} style = "color:#12090f">
                                   <p style = "margin-bottom :3px">"{{ row.0 | capfirst}}"</p>
                                 </a>
                                 <p style = "
