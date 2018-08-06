@@ -1893,7 +1893,7 @@
     <form action="/tagcomparepost/" method="post">
     {% csrf_token %}
       <div class="form-group">
-        <p class = "text-center" style = "font-size: 2.4rem;font-weight: 300;font-family: fantasy;color:  #F7882F;margin-bottom: 2px">Compare similar technology: </p>
+        <p class = "text-center" style = "font-size: 2.4rem;font-weight: 300;font-family: fantasy;color:  #000000;margin-bottom: 2px">Compare similar technology: </p>
         <p class = "text-center" style = "color:#12090f">Enter a pair of technology like 'firefox' and 'google-chrome' to compare their features or try out the examples in the table below!</p>
           {% for key, value in Error.items %}
           {% if value.1 %}
@@ -1954,7 +1954,7 @@
 
                   <table class="table table-hover table-striped" style = "background-color : #FFFFFF;margin-bottom:2rem;color:#12090f;border-top:3px solid #EFEFEF;">
 
-                      <tr style = "background-color:#EFEFEF; border-bottom: 4px solid #12090f;color: #F7C331;">
+                      <tr style = "background-color:#EFEFEF; border-bottom: 4px solid #12090f;color: #000000;">
                       <th style = "text-align:center;padding: 6px;">Tool</th>
                       <th style = "text-align:center;padding: 6px;">Concept</th>
                       <th style = "text-align:center;padding: 6px;">Algorithm</th>
