@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^selecttag/', views.selecttag,name = 'selecttag'),
     url(r'^tagcomparepost/',views.tagcomparepost, name = 'tagcomparepost'),
     url(r'^([0-9a-zA-Z+.-]+)/$',views.tagpair, name = 'tagpair'),  
-    url(r'^([0-9a-zA-Z+.-]+)vs([0-9a-zA-Z+.-]+)/$',views.tagcompare, name = 'tagcompare'),
-    url('google5a111c130c6d4195.html'),
+    url(r'^([0-9a-zA-Z+.-]+)/([0-9a-zA-Z+.-]+)/$',views.tagcompare, name = 'tagcompare'),
 ]
 
