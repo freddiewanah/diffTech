@@ -106,11 +106,7 @@
           <div class="col">
             {% for key,value in TagsWikiDict_simi.items %}
               <p style = "
-<<<<<<< HEAD
                   color: #6D7993;
-=======
-                  color: #96858F;
->>>>>>> d4bcbf3c95fb9b4e42cc86c458f614e505e94b10
                   font-size: 3rem;
                   font-family: fantasy;"> {{key|capfirst}}</p>
               <p style = "color:#000002">{{value|capfirst}}</p>
@@ -230,6 +226,20 @@
             <div class="col"></div>
             <center>Data comes from Stack Exchange with CC-BY-SA-3.0</center>
         </div>
+    <!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-149122954-1', 'auto');
+var firsttag = "{{Tag}}";
+var secondtag = "{{SimiTag}}";
+var page = firsttag + 'vs' + secondtag
+ga('send', 'pageview',page);
+</script>
+<!-- End Google Analytics -->
 <script>
     
 var dic = {
