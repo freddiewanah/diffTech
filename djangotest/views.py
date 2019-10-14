@@ -67,25 +67,25 @@ def tagpair(request,Tag):
 
 def makedescription(tag, simitag, features, others_qua):
     description = []
-    preTitle = "{} vs {}: Comparison between {} and {} based on user comments from StackOverflow. ".format(tag.capticalize(),simitag.capticalize(),tag, simitag)
-    return preTitle
+    preTitle = "{} vs {}: Comparison between {} and {} based on user comments from StackOverflow.".format(tag.capticalize(),simitag.capticalize(),tag, simitag)
+    description.append(preTitle)
     for value in features.values():
         for examples in value.values():
             for row in examples:
                 sentence = row[0]
                 description.append(sentence[0].upper()+sentence[1:]+".")
                 if len(description) == 3:
-                    return preTitle + " ".join(description)
+                    return " ".join(description)
     for value in others_qua.values():
         for examples in value.values():
             for row in examples:
                 sentence = row[0]
                 description.append(sentence[0].upper()+sentence[1:]+".")
                 if len(description) == 3:
-                    return preTitle + " ".join(description)
+                    return " ".join(description)
     values = " ".join(description)
 
-    return preTitle+values
+    return values
 
 
 def tagcompare(request, twotags):
@@ -203,7 +203,7 @@ def tagcompare(request, twotags):
         tagsWikiDict_tag[Tag] = tagsWikiDict[Tag]
         tagsWikiDict_simi[SimiTag] = tagsWikiDict[SimiTag]
 
-        description = "{} vs {}: Comparison between {} and {} based on user comments from StackOverflow. ".format(Tag.capticalize(),SimiTag.capticalize(),Tag, SimiTag)
+        description = makedescription(Tag, SimiTag, features, others_qua)
 
     else:
         raise Http404("Tag pair does not exist")
