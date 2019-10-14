@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@9_mix@!muw&k2eek@h15xup-z_u&b943q!uit6yv*hy_=_b&)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['difftech.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['difftech.herokuapp.com','localhost','127.0.0.1']
 
 
 # Application definition
@@ -80,6 +80,11 @@ DATABASES = {
         'USER':'vocszpuquitroq',
         'PORT':'5432',
         'PASSWORD':'7217399a47bde7a83f5caa1e6db165677e23fe94222e7cb8f05f8350421f4f54',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'postgres',
+        # 'HOST':'localhost',
+        # 'USER':'',
+        # 'PORT':'5432',
 
     }
 }
