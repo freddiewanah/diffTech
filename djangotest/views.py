@@ -68,6 +68,7 @@ def tagpair(request,Tag):
 def makedescription(tag, simitag, features, others_qua):
     description = []
     preTitle = "{} vs {}: Comparison between {} and {} based on user comments from StackOverflow. ".format(tag.capticalize(),simitag.capticalize(),tag, simitag)
+    return preTitle
     for value in features.values():
         for examples in value.values():
             for row in examples:
