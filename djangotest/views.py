@@ -83,7 +83,7 @@ def makedescription(tag, simitag, features, others_qua):
                     return " ".join(description)
     values = " ".join(description)
     preTitle = "{} vs {}: This site gathered user comments from StackOverflow on {} and {}. ".format(tag.capticalize(),simitag.capticalize(),tag, simitag)
-    return preTitle+values
+    return values
 
 
 def tagcompare(request, twotags):
