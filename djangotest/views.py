@@ -67,22 +67,23 @@ def tagpair(request,Tag):
 
 def makedescription(tag, simitag, features, others_qua):
     description = []
+    preTitle = "{} vs {}: Comparison between {} and {} based on user comments from StackOverflow. ".format(tag.capticalize(),simitag.capticalize(),tag, simitag)
     for value in features.values():
         for examples in value.values():
             for row in examples:
                 sentence = row[0]
                 description.append(sentence[0].upper()+sentence[1:]+".")
                 if len(description) == 3:
-                    return " ".join(description)
+                    return preTitle + " ".join(description)
     for value in others_qua.values():
         for examples in value.values():
             for row in examples:
                 sentence = row[0]
                 description.append(sentence[0].upper()+sentence[1:]+".")
                 if len(description) == 3:
-                    return " ".join(description)
+                    return preTitle + " ".join(description)
     values = " ".join(description)
-    preTitle = "{} vs {}: This site gathered user comments from StackOverflow on {} and {}. ".format(tag.capticalize(),simitag.capticalize(),tag, simitag)
+
     return preTitle+values
 
 
