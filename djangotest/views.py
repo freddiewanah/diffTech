@@ -83,7 +83,7 @@ def makedescription(tag, simitag, features, others_qua):
                     return " ".join(description)
     values = " ".join(description)
     preTitle = "{} vs {}: This site gathered user comments from StackOverflow on {} and {}. ".format(tag.capticalize(),simitag.capticalize(),tag, simitag)
-    return values
+    return preTitle+values
 
 
 def tagcompare(request, twotags):
@@ -201,7 +201,7 @@ def tagcompare(request, twotags):
         tagsWikiDict_tag[Tag] = tagsWikiDict[Tag]
         tagsWikiDict_simi[SimiTag] = tagsWikiDict[SimiTag]
 
-        description = makedescription(Tag, simiTag, features, others_qua)
+        description = makedescription(Tag, SimiTag, features, others_qua)
 
     else:
         raise Http404("Tag pair does not exist")
