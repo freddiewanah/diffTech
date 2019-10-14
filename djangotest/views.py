@@ -203,7 +203,7 @@ def tagcompare(request, twotags):
         tagsWikiDict_tag[Tag] = tagsWikiDict[Tag]
         tagsWikiDict_simi[SimiTag] = tagsWikiDict[SimiTag]
 
-        description = makedescription(Tag, SimiTag, features, others_qua)
+        description = "{} vs {}: Comparison between {} and {} based on user comments from StackOverflow. ".format(Tag.capticalize(),SimiTag.capticalize(),Tag, SimiTag)
 
     else:
         raise Http404("Tag pair does not exist")
