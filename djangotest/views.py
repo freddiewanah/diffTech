@@ -65,7 +65,7 @@ def tagpair(request,Tag):
     return render(request, 'tagpair.html',{'tagsWikiDicts':tagsWikiDict,'ori_tagwikis':ori_tagwiki})
 
 
-def makedescription(features, others_qua):
+def makedescription(tag, simitag, features, others_qua):
     description = []
     for value in features.values():
         for examples in value.values():
@@ -81,7 +81,9 @@ def makedescription(features, others_qua):
                 description.append(sentence[0].upper()+sentence[1:]+".")
                 if len(description) == 3:
                     return " ".join(description)
-    return " ".join(description)
+    values = " ".join(description)
+    preTitle = "{} vs {}: This site gathered user comments from StackOverflow on {} and {}. ".format(tag.capticalize(),simitag.capticalize(),tag, simitag)
+    return preTitle+values
 
 
 def tagcompare(request, twotags):
@@ -199,7 +201,7 @@ def tagcompare(request, twotags):
         tagsWikiDict_tag[Tag] = tagsWikiDict[Tag]
         tagsWikiDict_simi[SimiTag] = tagsWikiDict[SimiTag]
 
-        description = makedescription(features, others_qua)
+        description = makedescription(Tag, simiTag, features, others_qua)
 
     else:
         raise Http404("Tag pair does not exist")
