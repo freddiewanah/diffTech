@@ -5,6 +5,10 @@
     <loc>https://difftech.herokuapp.com/</loc>
     <changefreq>always</changefreq>
   </url>
+    <url>
+    <loc>https://difftech.herokuapp.com/about/</loc>
+    <changefreq>always</changefreq>
+  </url>
   <url>
     <loc>https://difftech.herokuapp.com/mysqlVSpostgresql/</loc>
     <changefreq>always</changefreq>

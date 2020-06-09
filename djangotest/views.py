@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.http import Http404
 from .models import tagpaircompare, tagpair as TP, relation
 from stackapi import StackAPI
+from django.utils.safestring import mark_safe
 # import json
 # from django.core import serializers
 # import os
@@ -16,6 +17,10 @@ def robots(request):
 def google(request):
 
     return render(request, 'google5a111c130c6d4195.html')
+
+def about(request):
+
+    return render(request, 'about.html')
 
 def google(request):
 
@@ -133,26 +138,39 @@ def tagcompare(request, twotags):
         totalcount = 0
         for eachone in RelationGroups: #relation acts like a dictionary #change Relation to RelationGroups
             totalcount+= 1
-            if totalcount <= 100:
-                postid = eachone['example_id']
-                IDS_noset.append(int(postid))
 
-                #info = SITE.fetch('posts/{ids}/revisions', ids = IDS)
+            postid = eachone['example_id']
+            IDS_noset.append(int(postid))
 
-                if ' overall' in eachone['quality']:
-                    quality = eachone['quality'].replace(' overall','')
-                    qualityCate = 'Others'
-                elif ' in ' in eachone['quality']:
-                    quality = eachone['quality'].split(' in ')[0]
-                    qualityCate = eachone['quality'].split(' in ')[1]
-                if qualityCate not in features.keys():
-                    features[qualityCate] = {}
-                    features[qualityCate][quality] = [[eachone['example'],eachone['example_id']]]
+            #info = SITE.fetch('posts/{ids}/revisions', ids = IDS)
+
+            if ' overall' in eachone['quality']:
+                quality = eachone['quality'].replace(' overall','')
+                qualityCate = 'Others'
+            elif ' in ' in eachone['quality']:
+                quality = eachone['quality'].split(' in ')[0]
+                qualityCate = eachone['quality'].split(' in ')[1]
+            sentence = eachone['example']
+            if quality != 'general':
+                sentence = sentence.replace(quality,'<strong>'+quality+'</strong>')
+                if quality not in sentence:
+                    quals = quality.split()
+                    if len(quals)>1:
+
+                        sentence = sentence.replace(' '.join(quals[:-1]), '<strong>' + ' '.join(quals[:-1]) + '</strong>')
+
+                        sentence = sentence.replace(' '.join(quals[1:]),
+                                                    '<strong>' + ' '.join(quals[1:]) + '</strong>')
+
+                sentence = mark_safe(sentence)
+            if qualityCate not in features.keys():
+                features[qualityCate] = {}
+                features[qualityCate][quality] = [[sentence,eachone['example_id']]]
+            else:
+                if quality in features[qualityCate].keys():
+                    features[qualityCate][quality].append([sentence,eachone['example_id']])
                 else:
-                    if quality in features[qualityCate].keys():
-                        features[qualityCate][quality].append([eachone['example'],eachone['example_id']])
-                    else:
-                        features[qualityCate][quality] = [[eachone['example'],eachone['example_id']]]
+                    features[qualityCate][quality] = [[sentence,eachone['example_id']]]
 
 
         id_title = {} #id of post and title of that post, put into a dictionary
@@ -160,9 +178,26 @@ def tagcompare(request, twotags):
         # if not tested:
         #     raise Http404('lalal')
         IDS = sorted(IDS_noset)
-        info = SITE.fetch('/posts/{ids}',ids = IDS, filter = '!9Z(-wsMqT')
-        for item in info['items']:
-            id_title[item['post_id']] = item['title']
+        if len(IDS) > 99:
+            loopTime = int(len(IDS)/100)
+            for i in range(loopTime+1):
+                if i == 0:
+                    info = SITE.fetch('posts/{ids}', ids=IDS[:100], filter='!9Z(-wsMqT')
+                    for item in info['items']:
+                        id_title[item['post_id']] = item['title']
+                elif i == loopTime:
+                    info = SITE.fetch('posts/{ids}', ids=IDS[i*100:], filter='!9Z(-wsMqT')
+                    for item in info['items']:
+                        id_title[item['post_id']] = item['title']
+                else:
+                    info = SITE.fetch('posts/{ids}', ids=IDS[i * 100:(i+1) * 100], filter='!9Z(-wsMqT')
+                    for item in info['items']:
+                        id_title[item['post_id']] = item['title']
+        else:
+            info = SITE.fetch('posts/{ids}', ids=IDS, filter='!9Z(-wsMqT')
+            for item in info['items']:
+                id_title[item['post_id']] = item['title']
+
 
 
         for qualityCate, qualityDict in features.items():
@@ -359,7 +394,7 @@ def originaltagcomparepost(request):
             id_title = {} #id of post and title of that post, put into a dictionary
 
             IDS = sorted(IDS_noset)
-            info = SITE.fetch('/posts/{ids}',ids = IDS, filter = '!9Z(-wsMqT')
+            info = SITE.fetch('posts/{ids}',ids = IDS, filter = '!9Z(-wsMqT')
             for item in info['items']:
                 id_title[item['post_id']] = item['title']
 

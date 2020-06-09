@@ -1,4 +1,5 @@
 https://difftech.herokuapp.com/
+https://difftech.herokuapp.com/about/
 https://difftech.herokuapp.com/3des-vs-aes/
 https://difftech.herokuapp.com/flot-vs-jqplot/
 https://difftech.herokuapp.com/directory-vs-folder/
